@@ -1,0 +1,469 @@
+/* =============================================
+   DOKKAN BATTLE - FEUILLE DE STYLE
+   Fichier: style.css
+   ============================================= */
+
+/* ===== VARIABLES CSS (nos couleurs et polices) ===== */
+:root {
+    --orange-goku: #FF6B35;
+    --bleu-goku: #004E89;
+    --jaune-super: #FFD23F;
+    --noir: #1a1a1a;
+    --blanc: #ffffff;
+    --gris: #f5f5f5;
+    --ombre: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== RESET ET BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background: linear-gradient(135deg, var(--bleu-goku) 0%, #001a33 100%);
+    color: var(--blanc);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Effet d'étoiles en arrière-plan */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent);
+    background-size: 200% 200%;
+    opacity: 0.3;
+    animation: etoiles 60s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes etoiles {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* ===== HEADER ===== */
+header {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(90deg, var(--orange-goku) 0%, #ff8c5a 100%);
+    padding: 2rem 2rem 1.5rem;
+    box-shadow: 0 8px 30px var(--ombre);
+    border-bottom: 5px solid var(--jaune-super);
+}
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 4px 4px 0px var(--bleu-goku), 
+                 8px 8px 0px rgba(0, 0, 0, 0.3);
+    animation: titre-apparition 0.8s ease-out;
+}
+
+@keyframes titre-apparition {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.sous-titre {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    opacity: 0;
+    animation: fade-in 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== CONTENEUR PRINCIPAL ===== */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ===== SECTION FILTRES ===== */
+.filtres {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    animation: slide-up 0.6s ease-out 0.4s backwards;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filtre-btn {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 800;
+    padding: 0.8rem 2rem;
+    border: 3px solid var(--jaune-super);
+    background: var(--noir);
+    color: var(--jaune-super);
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.filtre-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--jaune-super);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+}
+
+.filtre-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.filtre-btn:hover {
+    color: var(--noir);
+    border-color: var(--jaune-super);
+}
+
+.filtre-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.filtre-btn.actif {
+    background: var(--orange-goku);
+    color: var(--blanc);
+    border-color: var(--orange-goku);
+    transform: scale(1.05);
+}
+
+/* ===== BOUTON AJOUTER ÉQUIPE ===== */
+.btn-ajouter {
+    display: block;
+    margin: 0 auto 3rem;
+    padding: 1rem 3rem;
+    background: var(--jaune-super);
+    color: var(--noir);
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 210, 63, 0.4);
+    transition: all 0.3s ease;
+    animation: slide-up 0.6s ease-out 0.6s backwards;
+}
+
+.btn-ajouter:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 210, 63, 0.6);
+}
+
+.btn-ajouter:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* ===== GRILLE DES ÉQUIPES ===== */
+.equipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    animation: slide-up 0.6s ease-out 0.8s backwards;
+}
+
+/* ===== CARTE ÉQUIPE ===== */
+.carte-equipe {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 2px solid rgba(255, 210, 63, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carte-equipe::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--orange-goku), var(--jaune-super), var(--bleu-goku));
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.carte-equipe:hover::before {
+    opacity: 1;
+}
+
+.carte-equipe:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 50px rgba(255, 107, 53, 0.4);
+}
+
+.badge-categorie {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--orange-goku);
+    color: var(--blanc);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.carte-equipe h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--jaune-super);
+    letter-spacing: 2px;
+}
+
+.leader {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    background: rgba(255, 107, 53, 0.2);
+    border-left: 4px solid var(--orange-goku);
+}
+
+.personnages {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.personnages li {
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    border-left: 3px solid var(--bleu-goku);
+    transition: all 0.2s ease;
+}
+
+.personnages li:hover {
+    background: rgba(255, 210, 63, 0.1);
+    border-left-color: var(--jaune-super);
+    transform: translateX(5px);
+}
+
+.stats {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(255, 210, 63, 0.2);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== FORMULAIRE MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.actif {
+    display: flex;
+    animation: fade-in 0.3s ease;
+}
+
+.modal-contenu {
+    background: linear-gradient(135deg, var(--bleu-goku) 0%, #003366 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    border: 3px solid var(--orange-goku);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: modal-apparition 0.4s ease-out;
+}
+
+@keyframes modal-apparition {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-contenu h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--jaune-super);
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.form-groupe {
+    margin-bottom: 1.5rem;
+}
+
+.form-groupe label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--jaune-super);
+    font-size: 1.1rem;
+}
+
+.form-groupe input,
+.form-groupe select,
+.form-groupe textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid rgba(255, 210, 63, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--blanc);
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.form-groupe input:focus,
+.form-groupe select:focus,
+.form-groupe textarea:focus {
+    outline: none;
+    border-color: var(--jaune-super);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-groupe textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-valider {
+    background: var(--jaune-super);
+    color: var(--noir);
+}
+
+.btn-valider:hover {
+    background: #ffdb5c;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 210, 63, 0.5);
+}
+
+.btn-annuler {
+    background: transparent;
+    color: var(--blanc);
+    border: 2px solid var(--blanc);
+}
+
+.btn-annuler:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* ===== MESSAGE VIDE ===== */
+.message-vide {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .equipes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filtres {
+        flex-direction: column;
+    }
+
+    .filtre-btn {
+        width: 100%;
+    }
+}
