@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokkan Battle - Meilleures Équipes</title>
+    
+    <!-- Lien vers Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Lien vers notre fichier CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- EN-TÊTE -->
+    <header>
+        <h1>🐉 DOKKAN BATTLE</h1>
+        <p class="sous-titre">Les Meilleures Équipes</p>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="container">
+        <!-- BOUTONS DE FILTRAGE -->
+        <div class="filtres">
+            <button class="filtre-btn actif" data-categorie="toutes">
+                <span>Toutes</span>
+            </button>
+            <button class="filtre-btn" data-categorie="Super">
+                <span>Super</span>
+            </button>
+            <button class="filtre-btn" data-categorie="Extrême">
+                <span>Extrême</span>
+            </button>
+            <button class="filtre-btn" data-categorie="Fusion">
+                <span>Fusion</span>
+            </button>
+        </div>
+
+        <!-- BOUTON AJOUTER -->
+        <button class="btn-ajouter" id="btnAjouter">
+            + Ajouter une Équipe
+        </button>
+
+        <!-- GRILLE DES ÉQUIPES -->
+        <div class="equipes-grid" id="equipesGrid">
+            <!-- Les équipes seront ajoutées ici par JavaScript -->
+        </div>
+    </div>
+
+    <!-- MODAL FORMULAIRE -->
+    <div class="modal" id="modal">
+        <div class="modal-contenu">
+            <h2>Nouvelle Équipe</h2>
+            <form id="formEquipe">
+                <div class="form-groupe">
+                    <label for="nomEquipe">Nom de l'équipe :</label>
+                    <input type="text" id="nomEquipe" required placeholder="Ex: Saiyans Ultimes">
+                </div>
+
+                <div class="form-groupe">
+                    <label for="categorie">Catégorie :</label>
+                    <select id="categorie" required>
+                        <option value="">-- Choisir --</option>
+                        <option value="Super">Super</option>
+                        <option value="Extrême">Extrême</option>
+                        <option value="Fusion">Fusion</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-groupe">
+                    <label for="leader">Leader :</label>
+                    <input type="text" id="leader" required placeholder="Ex: Goku Ultra Instinct">
+                </div>
+
+                <div class="form-groupe">
+                    <label for="personnages">Personnages (un par ligne) :</label>
+                    <textarea id="personnages" required placeholder="Ex:&#10;Vegeta SSBE&#10;Gohan Beast&#10;Piccolo Orange"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-valider">Ajouter</button>
+                    <button type="button" class="btn btn-annuler" id="btnAnnuler">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lien vers notre fichier JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
