@@ -5,13 +5,13 @@
 
 /* ===== VARIABLES CSS (nos couleurs et polices) ===== */
 :root {
-    --orange-goku: #FF6B35;
-    --bleu-goku: #004E89;
-    --jaune-super: #FFD23F;
-    --noir: #1a1a1a;
-    --blanc: #ffffff;
-    --gris: #f5f5f5;
-    --ombre: rgba(0, 0, 0, 0.2);
+    --bleu-principal: #2563eb;      
+    --bleu-fonce: #1e40af;          
+    --bleu-clair: #60a5fa;          
+    --blanc: #ffffff;               
+    --noir: #1a1a1a;               
+    --gris: #f3f4f6;               
+    --ombre: rgba(0, 0, 0, 0.1);   
 }
 
 /* ===== RESET ET BASE ===== */
@@ -23,8 +23,8 @@
 
 body {
     font-family: 'Barlow', sans-serif;
-    background: linear-gradient(135deg, var(--bleu-goku) 0%, #001a33 100%);
-    color: var(--blanc);
+    background: var(--blanc);                    /* ← Fond blanc */
+    color: var(--noir);                          /* ← Texte noir */
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -61,10 +61,10 @@ body::before {
 header {
     position: relative;
     z-index: 10;
-    background: linear-gradient(90deg, var(--orange-goku) 0%, #ff8c5a 100%);
+    background: var(--bleu-principal);           /* ← Header bleu */
     padding: 2rem 2rem 1.5rem;
     box-shadow: 0 8px 30px var(--ombre);
-    border-bottom: 5px solid var(--jaune-super);
+    border-bottom: 5px solid var(--bleu-fonce);  /* ← Bordure bleu foncé */
 }
 
 h1 {
@@ -72,8 +72,8 @@ h1 {
     font-size: 4rem;
     text-align: center;
     letter-spacing: 3px;
-    text-shadow: 4px 4px 0px var(--bleu-goku), 
-                 8px 8px 0px rgba(0, 0, 0, 0.3);
+    color: var(--blanc);                         /* ← Titre blanc */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* ← Ombre simple */
     animation: titre-apparition 0.8s ease-out;
 }
 
@@ -93,6 +93,7 @@ h1 {
     font-size: 1.2rem;
     margin-top: 0.5rem;
     font-weight: 600;
+    color: var(--blanc);                         /* ← Sous-titre blanc */
     opacity: 0;
     animation: fade-in 0.8s ease-out 0.3s forwards;
 }
